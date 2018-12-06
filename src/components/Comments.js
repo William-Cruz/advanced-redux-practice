@@ -1,6 +1,6 @@
 import React from "react";
-import { connect } from 'react-redux';
-
+import PropTypes from "prop-types"
+import { connect } from 'react-redux'
 
 function Comments(props) {
   return ( 
@@ -12,7 +12,7 @@ function Comments(props) {
                       <i className="fa fa-comments fa-5x"></i>
                   </div>
                   <div className="col-xs-9 text-right">
-                      <div className="huge">{props.comments}</div>
+                      <div className="huge">{props.newComments}</div>
                       <div>New Comments!</div>
                   </div>
               </div>
@@ -28,16 +28,12 @@ function Comments(props) {
     </div>);
 }
 
-function mapStateToProps(state) {
-    return {
-        comments:state.newComments
-    };
-}
+const mapStateToProps = (state) => {return{newComments:state.newComments}}
 
-
-const CommentsContainer = connect(mapStateToProps)(Comments);
+const CommentsContainer = connect(mapStateToProps)(Comments)
 
 export default CommentsContainer;
 
-//let connector = connect(mapStateTpProps);
-//const CommentsContainer = connector(Comments);
+CommentsContainer.propTypes = {
+newComments: PropTypes.number
+}

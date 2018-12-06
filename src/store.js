@@ -1,9 +1,11 @@
-// we have decided that we are using redux so we have to
-import { createStore } from 'redux';
+//we have decided that we are using redux so we have to install and  import it
+import {createStore} from 'redux';
 //we need our data to put in the database
 import state from "./state";
 //just take this reducers thing for granted right now
 import reducers from "./reducers";
-var store = createStore(reducers, state);
+let store = createStore(reducers,state);
+
+//createStore is a function of redux
 
 export default store;

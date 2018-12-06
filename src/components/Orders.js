@@ -1,5 +1,6 @@
-import React from "react";
-import { connect } from 'react-redux';
+import React from "react"
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
 
 function Orders(props) {
   return ( 
@@ -11,7 +12,7 @@ function Orders(props) {
               <i className="fa fa-shopping-cart fa-5x"></i>
             </div>
             <div className="col-xs-9 text-right">
-              <div className="huge">{props.orders}</div>
+              <div className="huge">{props.newOrders}</div>
               <div>New Orders!</div>
             </div>
           </div>
@@ -27,15 +28,12 @@ function Orders(props) {
     </div>);
 }
 
-function mapStateToProps(state) {
-  return {
-    orders:state.newOrders
-  };
-}
+const mapStateToProps = (state) => {return{newOrders:state.newOrders}}
 
-
-const OrdersContainer = connect(mapStateToProps)(Orders);
+const OrdersContainer = connect(mapStateToProps)(Orders)
 
 export default OrdersContainer;
 
-// export default Orders;
+OrdersContainer.PropTypes = {
+  newOrders: PropTypes.number.isRequired
+}
