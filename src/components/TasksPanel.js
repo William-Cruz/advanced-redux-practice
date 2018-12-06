@@ -1,5 +1,9 @@
 import React from "react";
 import TaskItem from "./TaskItem";
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types'
+
+
 function TasksPanel(props) {
   return (  <div className="panel panel-default">
                 <div className="panel-heading">
@@ -22,4 +26,14 @@ function TasksPanel(props) {
         );
 }
 
-export default TasksPanel;
+
+
+const mapStateToProps=(state)=>{return{tasks:state.tasks}}
+
+const TaskPanelContainer = connect(mapStateToProps)(TasksPanel);
+
+export default TaskPanelContainer
+
+TaskPanelContainer.PropTypes = {
+  tasks: PropTypes.string.isRequired
+}
